@@ -17,7 +17,7 @@
 </svelte:head>
 
 <div
-	class="flex min-h-screen flex-col bg-neutral-950 font-sans text-neutral-100 selection:bg-indigo-500 selection:text-white"
+	class="flex min-h-screen flex-col bg-surface font-sans text-on-surface selection:bg-primary selection:text-white"
 >
 	<Navbar />
 	<main class="flex-1">

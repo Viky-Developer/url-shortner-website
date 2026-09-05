@@ -38,5 +38,13 @@ export default defineConfig(
 		rules: {
 			'svelte/no-navigation-without-resolve': 'error'
 		}
+	},
+	{
+		// Navbar/Footer use env-driven external URLs (PUBLIC_GITHUB_URL, PUBLIC_LOGIN_URL)
+		// which `resolve()` cannot validate, so the rule does not apply there.
+		files: ['src/lib/components/Navbar.svelte', 'src/lib/components/Footer.svelte'],
+		rules: {
+			'svelte/no-navigation-without-resolve': 'off'
+		}
 	}
 );

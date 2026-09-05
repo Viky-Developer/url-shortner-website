@@ -1,1 +1,105 @@
 @import 'tailwindcss';
+
+@theme {
+	/* ---- Colors: Primary (Indigo) ---- */
+	--color-primary-50: #eef2ff;
+	--color-primary-100: #e0e7ff;
+	--color-primary-200: #c7d2fe;
+	--color-primary-300: #a5b4fc;
+	--color-primary-400: #818cf8;
+	--color-primary-500: #6366f1;
+	--color-primary-600: #4f46e5;
+	--color-primary-700: #4338ca;
+	--color-primary-800: #3730a3;
+	--color-primary-900: #312e81;
+	--color-primary: var(--color-primary-600);
+
+	/* ---- Colors: Neutral (Slate) ---- */
+	--color-slate-50: #f8fafc;
+	--color-slate-100: #f1f5f9;
+	--color-slate-200: #e2e8f0;
+	--color-slate-300: #cbd5e1;
+	--color-slate-400: #94a3b8;
+	--color-slate-500: #64748b;
+	--color-slate-600: #475569;
+	--color-slate-700: #334155;
+	--color-slate-800: #1e293b;
+	--color-slate-900: #0f172a;
+	--color-slate-950: #020617;
+
+	/* ---- Colors: Semantic status ---- */
+	--color-success: #10b981; /* accent-emerald */
+	--color-warning: #f97316; /* tertiary */
+	--color-destructive: #f43f5e; /* accent-rose */
+	--color-specialty: #a855f7; /* accent-purple */
+	--color-error: #ba1a1a;
+
+	/* ---- Colors: Material surface scale ---- */
+	--color-surface: #f8f9ff;
+	--color-surface-dim: #cbdbf5;
+	--color-surface-bright: #f8f9ff;
+	--color-surface-container-lowest: #ffffff;
+	--color-surface-container-low: #eff4ff;
+	--color-surface-container: #e5eeff;
+	--color-surface-container-high: #dce9ff;
+	--color-surface-container-highest: #d3e4fe;
+	--color-on-surface: #0b1c30;
+	--color-on-surface-variant: #464555;
+	--color-inverse-surface: #213145;
+	--color-inverse-on-surface: #eaf1ff;
+	--color-outline: #777587;
+	--color-outline-variant: #c7c4d8;
+	--color-background: #f8f9ff;
+	--color-on-background: #0b1c30;
+
+	/* ---- Fonts ---- */
+	--font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+	--font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+	/* ---- Radius ---- */
+	--radius-sm: 0.125rem;
+	--radius: 0.25rem;
+	--radius-md: 0.375rem;
+	--radius-lg: 0.5rem;
+	--radius-xl: 0.75rem;
+	--radius-full: 9999px;
+
+	/* ---- Spacing ---- */
+	--space-2xs: 0.125rem;
+	--space-xs: 0.25rem;
+	--space-sm: 0.5rem;
+	--space-md: 0.75rem;
+	--space-base: 1rem;
+	--space-lg: 1.5rem;
+	--space-xl: 2rem;
+	--space-2xl: 3rem;
+	--space-3xl: 4rem;
+	--layout-margin-mobile: 1rem;
+	--layout-margin-desktop: 2rem;
+	--layout-max-width: 75rem;
+
+	/* ---- Shadows ---- */
+	--shadow-card: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+	--shadow-hover: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+	--shadow-overlay: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+	--shadow-modal: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+}
+
+/* ---- App shell token mapping (dark marketing surface) ----
+   Centralizes the hardcoded `neutral-950` shell colors used in +layout.svelte
+   so they are theme-driven and can be swapped via the design system. */
+@theme {
+	--color-app-bg: #0a0a0a;
+	--color-app-surface: #020617;
+	--color-app-border: rgba(255, 255, 255, 0.08);
+	--color-app-foreground: #f8fafc;
+	--color-app-muted: #94a3b8;
+}
+
+/* Tabular numerals for numeric interfaces (per design spec) */
+.font-tabular,
+.tabular-nums {
+	font-feature-settings:
+		'tnum' on,
+		'cv05' on;
+}
