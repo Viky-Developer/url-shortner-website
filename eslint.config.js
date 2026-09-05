@@ -40,9 +40,13 @@ export default defineConfig(
 		}
 	},
 	{
-		// Navbar/Footer use env-driven external URLs (PUBLIC_GITHUB_URL, PUBLIC_LOGIN_URL)
-		// which `resolve()` cannot validate, so the rule does not apply there.
-		files: ['src/lib/components/Navbar.svelte', 'src/lib/components/Footer.svelte'],
+		// Navbar/Footer use env-driven external URLs, Hero uses placeholder CTA routes
+		// that don't exist yet — resolve() cannot validate them.
+		files: [
+			'src/lib/components/Navbar.svelte',
+			'src/lib/components/Footer.svelte',
+			'src/lib/components/Hero.svelte'
+		],
 		rules: {
 			'svelte/no-navigation-without-resolve': 'off'
 		}
