@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+# Validate conventional commit: <type>(<scope>): <subject>
+# type: feat|fix|refactor|chore|docs|test|style|perf|build|ci|revert
+
+message="$(cat "$1")"
+
+if ! echo "$message" | grep -qE '^(feat|fix|refactor|chore|docs|test|style|perf|build|ci|revert)(\([a-z0-9_-]+\))?!?: .+'; then
+	echo ""
+	echo "error: invalid commit message:" >&2
+	echo "  $message" >&2
+	echo "" >&2
+	echo "expected format: <type>(<scope>): <subject>" >&2
+	echo "" >&2
+	echo "  types:" >&2
+	echo "    feat     - new feature" >&2
+	echo "    fix      - bug fix" >&2
+	echo "    refactor - refactoring" >&2
+	echo "    chore    - maintenance" >&2
+	echo "    docs     - documentation" >&2
+	echo "    test     - tests" >&2
+	echo "    style    - formatting" >&2
+	echo "    perf     - performance" >&2
+	echo "    build    - build system" >&2
+	echo "    ci       - CI config" >&2
+	echo "    revert   - revert a commit" >&2
+	echo "" >&2
+	echo "  examples:" >&2
+	echo "    feat(theme): add design tokens" >&2
+	echo "    fix(#3): correct redirect loop" >&2
+	echo "    chore: update dependencies" >&2
+	echo "" >&2
+	exit 1
+fi
