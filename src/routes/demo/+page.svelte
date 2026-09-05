@@ -69,9 +69,7 @@
 				<Button onclick={handlePrimaryClick}
 					>Primary {clickCount > 0 ? `(${clickCount})` : ''}</Button
 				>
-				<Button class="cursor-pointer" variant="secondary" onclick={handleSecondaryClick}
-					>Secondary</Button
-				>
+				<Button variant="secondary" onclick={handleSecondaryClick}>Secondary</Button>
 				<Button variant="ghost" onclick={() => showToast('Ghost clicked')}>Ghost</Button>
 				<Button variant="destructive" onclick={handleDestructiveClick}>Destructive</Button>
 				<Button variant="link" onclick={() => showToast('Link clicked')}>Link</Button>

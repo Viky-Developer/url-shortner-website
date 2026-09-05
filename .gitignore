@@ -23,3 +23,14 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 # Playwright
 test-results
+
+# Markdown docs (README.md stays tracked)
+AGENTS.md
+CLAUDE.md
+DESIGN.md
+*.md
+!README.md
+
+# Local editor / tooling config
+.claude/
+
