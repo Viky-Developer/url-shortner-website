@@ -48,7 +48,7 @@ test.describe('UI Components Demo', () => {
 	test('checkbox toggles state', async ({ page }) => {
 		const subscription = page.getByLabel('Email me product updates');
 		await expect(subscription).not.toBeChecked();
-		await subscription.check({ force: true });
+		await page.getByText('Email me product updates').click();
 		await expect(subscription).toBeChecked();
 		await expect(page.getByText('Subscription: on')).toBeVisible();
 	});
