@@ -1,1 +1,11 @@
+# Auto-recover .git/index if corrupted (0-byte file from sandbox git add)
+INDEX_SIZE=$(wc -c < "$(git rev-parse --git-dir)/index" 2>/dev/null | tr -d ' ')
+if [ "${INDEX_SIZE:-0}" -lt 12 ]; then
+  echo "[pre-commit] .git/index corrupted (${INDEX_SIZE} bytes) - auto-recovering..."
+  rm -f "$(git rev-parse --git-dir)/index"
+  git reset HEAD
+  echo "[pre-commit] Index recovered. Re-run your git add and git commit."
+  exit 1
+fi
+
 npx lint-staged
