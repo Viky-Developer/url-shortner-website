@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { ArrowRight } from 'lucide-svelte';
-	import { PUBLIC_LOGIN_URL } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
 
-	const loginUrl: string = PUBLIC_LOGIN_URL || 'http://localhost:5174/login';
+	const loginUrl: string = env.PUBLIC_LOGIN_URL || 'http://localhost:5174/login';
 </script>
 
 <section class="w-full bg-surface py-16 sm:py-24">

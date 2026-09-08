@@ -3,10 +3,10 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	import { PUBLIC_LOGO_URL } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
 
 	let { children } = $props();
-	const logoUrl = PUBLIC_LOGO_URL || favicon;
+	const logoUrl = env.PUBLIC_LOGO_URL || favicon;
 </script>
 
 <svelte:head>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { ArrowRight, Terminal, Link2, Share2, Copy, QrCode, Zap, Check } from 'lucide-svelte';
-	import { PUBLIC_LOGIN_URL } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
 
 	const DEFAULT_URL =
 		'https://github.com/sveltejs/kit/tree/master/packages/kit/src/runtime/server/page';
@@ -13,7 +13,7 @@
 	let copied = $state(false);
 	let showQrPanel = $state(false);
 
-	const loginUrl: string = PUBLIC_LOGIN_URL || 'http://localhost:5174/login';
+	const loginUrl: string = env.PUBLIC_LOGIN_URL || 'http://localhost:5174/login';
 
 	async function shorten() {
 		if (!inputUrl.trim()) return;

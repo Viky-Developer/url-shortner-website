@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { PUBLIC_GITHUB_URL, PUBLIC_LOGO_URL } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
+
+	const logoUrl = env.PUBLIC_LOGO_URL || '/logo.svg';
+	const githubUrl =
+		env.PUBLIC_GITHUB_URL || 'https://github.com/Viky-Developer/url-shortner-website';
 </script>
 
 <footer class="w-full border-t border-slate-200 bg-surface-container-lowest font-sans">
@@ -13,11 +17,7 @@
 					class="flex items-center gap-2 focus:outline-none"
 					aria-label="LinkPulse Home"
 				>
-					<img
-						src={PUBLIC_LOGO_URL || '/logo.svg'}
-						alt="LinkPulse Logo"
-						class="h-7 w-7 rounded-lg object-contain"
-					/>
+					<img src={logoUrl} alt="LinkPulse Logo" class="h-7 w-7 rounded-lg object-contain" />
 					<span class="text-base font-bold tracking-tight text-slate-900">
 						Link<span class="text-primary-600">Pulse</span>
 					</span>
@@ -67,7 +67,7 @@
 					</li>
 					<li>
 						<a
-							href={PUBLIC_GITHUB_URL}
+							href={githubUrl}
 							target="_blank"
 							rel="noreferrer"
 							class="transition hover:text-slate-900"
