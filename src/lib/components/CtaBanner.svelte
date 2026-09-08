@@ -2,13 +2,13 @@
 	import { ArrowRight } from 'lucide-svelte';
 	import { env } from '$env/dynamic/public';
 
-	const loginUrl: string = env.PUBLIC_LOGIN_URL || 'http://localhost:5174/login';
+	const loginUrl: string = env.PUBLIC_LOGIN_URL || '#';
 </script>
 
 <section class="w-full bg-surface py-16 sm:py-24">
-	<div class="mx-auto max-w-[75rem] px-4 sm:px-8">
+	<div class="mx-auto max-w-300 px-4 sm:px-8">
 		<div
-			class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-primary-600 to-slate-900 p-8 text-center text-white shadow-2xl sm:p-14 lg:p-20"
+			class="relative overflow-hidden rounded-2xl bg-linear-to-r from-slate-900 via-primary-600 to-slate-900 p-8 text-center text-white shadow-2xl sm:p-14 lg:p-20"
 		>
 			<!-- Ambient Dot Overlay -->
 			<div

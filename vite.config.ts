@@ -19,6 +19,12 @@ export default defineConfig({
 			adapter: adapter()
 		})
 	],
+	server: {
+		allowedHosts: true
+	},
+	preview: {
+		allowedHosts: true
+	},
 	test: {
 		environment: 'node',
 		include: ['src/**/*.{test,spec}.{js,ts}']

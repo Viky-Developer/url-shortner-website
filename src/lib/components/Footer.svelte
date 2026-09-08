@@ -3,12 +3,11 @@
 	import { env } from '$env/dynamic/public';
 
 	const logoUrl = env.PUBLIC_LOGO_URL || '/logo.svg';
-	const githubUrl =
-		env.PUBLIC_GITHUB_URL || 'https://github.com/Viky-Developer/url-shortner-website';
+	const githubUrl = env.PUBLIC_GITHUB_URL || '#';
 </script>
 
 <footer class="w-full border-t border-slate-200 bg-surface-container-lowest font-sans">
-	<div class="mx-auto max-w-[75rem] px-4 py-12 sm:px-8 lg:py-16">
+	<div class="mx-auto max-w-300 px-4 py-12 sm:px-8 lg:py-16">
 		<div class="grid grid-cols-1 gap-10 md:grid-cols-12">
 			<!-- Brand + Stack Tags -->
 			<div class="space-y-4 md:col-span-5">
@@ -60,7 +59,7 @@
 						<a href={resolve('/')} class="transition hover:text-slate-900">Home</a>
 					</li>
 					<li>
-						<a href="/#about" class="transition hover:text-slate-900">About</a>
+						<a href={resolve('/about')} class="transition hover:text-slate-900">About</a>
 					</li>
 					<li>
 						<a href="/#contact" class="transition hover:text-slate-900">Contact</a>

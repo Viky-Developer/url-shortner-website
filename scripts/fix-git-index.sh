@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # fix-git-index.sh — Detect and auto-recover a corrupted .git/index file.
 #
-# Root cause: when git add runs inside a sandboxed environment that cannot
+# Root cause: when git add/analyze runs inside a sandboxed environment that cannot
 # write to .git/, it silently creates a 0-byte index file. Every subsequent
 # git command then fails with:
 #   fatal: .git/index: index file smaller than expected

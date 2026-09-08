@@ -14,16 +14,15 @@
 		mobileOpen = false;
 	}
 
-	const loginUrl = env.PUBLIC_LOGIN_URL || '/signup';
+	const loginUrl: string = env.PUBLIC_LOGIN_URL || '#';
 	const logoUrl = env.PUBLIC_LOGO_URL || '/logo.svg';
-	const githubUrl =
-		env.PUBLIC_GITHUB_URL || 'https://github.com/Viky-Developer/url-shortner-website';
+	const githubUrl = env.PUBLIC_GITHUB_URL || '#';
 </script>
 
 <header
 	class="sticky top-0 z-50 w-full border-b border-slate-200 bg-surface-container-lowest/80 backdrop-blur-md"
 >
-	<div class="mx-auto flex h-14 max-w-[75rem] items-center justify-between px-4 sm:px-8">
+	<div class="mx-auto flex h-14 max-w-300 items-center justify-between px-4 sm:px-8">
 		<!-- Brand + Status -->
 		<div class="flex items-center gap-4">
 			<a
@@ -57,7 +56,7 @@
 			<nav class="flex items-center gap-4 text-sm font-medium text-slate-600">
 				<a href={resolve('/')} class="transition hover:text-on-surface">Home</a>
 				<a href={resolve('/demo')} class="transition hover:text-on-surface">Components</a>
-				<a href="/#about" class="transition hover:text-on-surface">About</a>
+				<a href={resolve('/about')} class="transition hover:text-on-surface">About</a>
 				<a href="/#contact" class="transition hover:text-on-surface">Contact</a>
 				<a
 					href={githubUrl}
@@ -132,7 +131,7 @@
 					Components
 				</a>
 				<a
-					href="/#about"
+					href={resolve('/about')}
 					onclick={close}
 					class="rounded-md px-3 py-2 text-sm font-medium text-on-surface hover:bg-slate-100"
 				>

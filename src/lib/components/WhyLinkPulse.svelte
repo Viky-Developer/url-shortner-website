@@ -2,8 +2,11 @@
 	import { Zap, ShieldCheck, Radio, Code2 } from 'lucide-svelte';
 </script>
 
-<section class="w-full border-t border-slate-200/60 bg-surface-container-lowest py-16 sm:py-24">
-	<div class="mx-auto max-w-[75rem] px-4 sm:px-8">
+<section
+	id="about"
+	class="w-full scroll-mt-16 border-t border-slate-200/60 bg-surface-container-lowest py-16 sm:py-24"
+>
+	<div class="mx-auto max-w-300 px-4 sm:px-8">
 		<div class="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
 			<div>
 				<div class="font-mono text-xs font-semibold tracking-wider text-slate-500 uppercase">
