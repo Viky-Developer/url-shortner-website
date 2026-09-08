@@ -41,7 +41,7 @@
 	<input type="checkbox" {checked} {disabled} onchange={handleChange} class="sr-only" {...rest} />
 	<span
 		class={cn(
-			'flex h-4 w-4 items-center justify-center rounded border transition-colors',
+			'pointer-events-none flex h-4 w-4 items-center justify-center rounded border transition-colors',
 			indicatorClass
 		)}
 	>
