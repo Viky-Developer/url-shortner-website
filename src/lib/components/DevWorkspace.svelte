@@ -2,7 +2,7 @@
 </script>
 
 <section class="w-full bg-surface py-8">
-	<div class="mx-auto max-w-[75rem] px-4 sm:px-8">
+	<div class="mx-auto max-w-300 px-4 sm:px-8">
 		<div class="relative overflow-hidden rounded-2xl shadow-xl">
 			<div
 				class="h-72 w-full bg-cover bg-center sm:h-96"

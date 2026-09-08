@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { ArrowRight, Terminal, Link2, Share2, Copy, QrCode, Zap, Check } from 'lucide-svelte';
 	import { env } from '$env/dynamic/public';
 
@@ -13,7 +14,7 @@
 	let copied = $state(false);
 	let showQrPanel = $state(false);
 
-	const loginUrl: string = env.PUBLIC_LOGIN_URL || 'http://localhost:5174/login';
+	const loginUrl: string = env.PUBLIC_LOGIN_URL || '#';
 
 	async function shorten() {
 		if (!inputUrl.trim()) return;
@@ -47,7 +48,7 @@
 <section class="relative w-full overflow-hidden bg-surface">
 	<!-- Ambient Radial Glow Behind Main Focal Area -->
 	<div
-		class="pointer-events-none absolute -top-32 left-1/2 -z-10 h-[520px] w-[720px] -translate-x-1/2 bg-gradient-to-b from-primary-fixed/40 via-surface-variant/20 to-transparent blur-3xl"
+		class="pointer-events-none absolute -top-32 left-1/2 -z-10 h-130 w-180 -translate-x-1/2 bg-linear-to-b from-primary-fixed/40 via-surface-variant/20 to-transparent blur-3xl"
 	></div>
 
 	<!-- Micro-dot background pattern -->
@@ -57,7 +58,7 @@
 	></div>
 
 	<div
-		class="mx-auto flex max-w-[75rem] flex-col items-center px-4 pt-10 pb-16 text-center sm:px-8 lg:px-8 lg:pt-14 lg:pb-20"
+		class="mx-auto flex max-w-300 flex-col items-center px-4 pt-10 pb-16 text-center sm:px-8 lg:px-8 lg:pt-14 lg:pb-20"
 	>
 		<!-- Pill Badge -->
 		<div
@@ -104,7 +105,7 @@
 				<ArrowRight class="h-4 w-4" />
 			</a>
 			<a
-				href="#about"
+				href={resolve('/about')}
 				class="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-slate-200 bg-surface-container-lowest px-7 py-3 text-sm font-medium text-slate-800 shadow-sm transition-all duration-150 hover:bg-slate-100 sm:w-auto"
 			>
 				<Terminal class="h-4 w-4 text-slate-500" />

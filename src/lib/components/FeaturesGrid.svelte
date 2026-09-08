@@ -3,7 +3,7 @@
 </script>
 
 <section class="w-full bg-surface py-16 sm:py-24">
-	<div class="mx-auto max-w-[75rem] px-4 sm:px-8">
+	<div class="mx-auto max-w-300 px-4 sm:px-8">
 		<div class="mx-auto mb-16 max-w-2xl text-center">
 			<div class="font-mono text-xs font-semibold tracking-wider text-primary-600 uppercase">
 				Core Capabilities

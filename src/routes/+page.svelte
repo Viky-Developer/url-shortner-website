@@ -1,10 +1,19 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import Hero from '$lib/components/Hero.svelte';
 	import Architecture from '$lib/components/Architecture.svelte';
 	import FeaturesGrid from '$lib/components/FeaturesGrid.svelte';
 	import DevWorkspace from '$lib/components/DevWorkspace.svelte';
 	import WhyLinkPulse from '$lib/components/WhyLinkPulse.svelte';
 	import CtaBanner from '$lib/components/CtaBanner.svelte';
+
+	onMount(() => {
+		if (window.location.hash === '#about') {
+			goto(resolve('/about'), { replaceState: true });
+		}
+	});
 </script>
 
 <svelte:head>
