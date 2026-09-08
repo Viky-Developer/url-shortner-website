@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { ArrowRight, User, Menu, X } from 'lucide-svelte';
-	import { Button } from '$lib/components/ui';
+	import { User, Menu, X } from 'lucide-svelte';
 	import { env } from '$env/dynamic/public';
 
 	let mobileOpen = $state(false);
@@ -55,9 +54,8 @@
 		<div class="hidden items-center gap-5 md:flex">
 			<nav class="flex items-center gap-4 text-sm font-medium text-slate-600">
 				<a href={resolve('/')} class="transition hover:text-on-surface">Home</a>
-				<a href={resolve('/demo')} class="transition hover:text-on-surface">Components</a>
 				<a href={resolve('/about')} class="transition hover:text-on-surface">About</a>
-				<a href="/#contact" class="transition hover:text-on-surface">Contact</a>
+				<a href={resolve('/contact')} class="transition hover:text-on-surface">Contact</a>
 				<a
 					href={githubUrl}
 					target="_blank"
@@ -75,12 +73,6 @@
 				>
 					<User class="h-4 w-4" />
 					Log in
-				</a>
-				<a href={loginUrl}>
-					<Button size="sm">
-						Get Started
-						<ArrowRight class="h-3.5 w-3.5" />
-					</Button>
 				</a>
 			</div>
 		</div>
@@ -124,13 +116,6 @@
 					Home
 				</a>
 				<a
-					href={resolve('/demo')}
-					onclick={close}
-					class="rounded-md px-3 py-2 text-sm font-medium text-on-surface hover:bg-slate-100"
-				>
-					Components
-				</a>
-				<a
 					href={resolve('/about')}
 					onclick={close}
 					class="rounded-md px-3 py-2 text-sm font-medium text-on-surface hover:bg-slate-100"
@@ -138,7 +123,7 @@
 					About
 				</a>
 				<a
-					href="/#contact"
+					href={resolve('/contact')}
 					onclick={close}
 					class="rounded-md px-3 py-2 text-sm font-medium text-on-surface hover:bg-slate-100"
 				>

@@ -12,6 +12,8 @@
 	onMount(() => {
 		if (window.location.hash === '#about') {
 			goto(resolve('/about'), { replaceState: true });
+		} else if (window.location.hash === '#contact') {
+			goto(resolve('/contact'), { replaceState: true });
 		}
 	});
 </script>
