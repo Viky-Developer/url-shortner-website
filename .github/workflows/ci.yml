@@ -38,7 +38,7 @@ jobs:
         run: npm run check
 
   build:
-    name: build
+    name: built
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
