@@ -45,7 +45,8 @@ export default defineConfig(
 		files: [
 			'src/lib/components/Navbar.svelte',
 			'src/lib/components/Footer.svelte',
-			'src/lib/components/Hero.svelte'
+			'src/lib/components/Hero.svelte',
+			'src/lib/components/CtaBanner.svelte'
 		],
 		rules: {
 			'svelte/no-navigation-without-resolve': 'off'
