@@ -3,13 +3,15 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import { env } from '$env/dynamic/public';
 
 	let { children } = $props();
+	const logoUrl = env.PUBLIC_LOGO_URL || favicon;
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
-	<title>ShortLink — Next-Gen URL Shortener & Analytics Platform</title>
+	<link rel="icon" type="image/svg+xml" href={logoUrl} />
+	<title>LinkPulse — Next-Gen URL Shortener & Analytics Platform</title>
 	<meta
 		name="description"
 		content="Enterprise-grade URL shortening, branded link domains, and real-time edge analytics engineered for modern marketing and development teams."

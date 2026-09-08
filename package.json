@@ -15,7 +15,9 @@
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run && npm run test:e2e",
 		"test:e2e": "playwright install && playwright test",
-		"check:branch": "bash scripts/check-branch.sh"
+		"check:branch": "bash scripts/check-branch.sh",
+		"validate:commit-message": "node scripts/commit-message.js",
+		"git:fix": "bash scripts/fix-git-index.sh"
 	},
 	"lint-staged": {
 		"*.{ts,js,svelte}": [

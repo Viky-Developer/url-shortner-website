@@ -1,24 +1,25 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
-	import { ArrowRight } from 'lucide-svelte';
+	import Hero from '$lib/components/Hero.svelte';
+	import Architecture from '$lib/components/Architecture.svelte';
+	import FeaturesGrid from '$lib/components/FeaturesGrid.svelte';
+	import DevWorkspace from '$lib/components/DevWorkspace.svelte';
+	import WhyLinkPulse from '$lib/components/WhyLinkPulse.svelte';
+	import CtaBanner from '$lib/components/CtaBanner.svelte';
 </script>
 
 <svelte:head>
-	<title>ShortLink — UI Components Library</title>
+	<title>LinkPulse — Short Links. Smart Tracking.</title>
+	<meta
+		name="description"
+		content="High-performance URL shortener with sub-millisecond redirects, real-time telemetry, and enterprise edge analytics."
+	/>
 </svelte:head>
 
-<div class="flex min-h-[60vh] flex-col items-center justify-center px-6 text-center">
-	<h1 class="text-4xl font-bold tracking-tight text-on-surface">
-		Short<span class="text-primary-600">Link</span>
-	</h1>
-	<p class="mt-4 max-w-md text-lg text-slate-600">
-		UI components library built on the "Modern Hyperlink Engine" design system.
-	</p>
-	<a
-		href={resolve('/demo')}
-		class="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-700"
-	>
-		Explore Components
-		<ArrowRight class="h-4 w-4" />
-	</a>
+<div class="flex w-full flex-col">
+	<Hero />
+	<Architecture />
+	<FeaturesGrid />
+	<DevWorkspace />
+	<WhyLinkPulse />
+	<CtaBanner />
 </div>

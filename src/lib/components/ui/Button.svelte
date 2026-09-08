@@ -40,7 +40,7 @@
 <button
 	{type}
 	class={cn(
-		'inline-flex items-center justify-center gap-1.5 rounded-md text-sm font-medium whitespace-nowrap transition-all duration-150 hover:scale-[1.03] active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50 disabled:hover:scale-100',
+		'inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-md text-sm font-medium whitespace-nowrap transition-all duration-150 hover:scale-[1.03] active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50 disabled:hover:scale-100',
 		variants[variant],
 		sizes[size],
 		className
