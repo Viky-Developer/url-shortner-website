@@ -81,7 +81,7 @@ jobs:
         run: cp .env.example .env
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps
 
       - name: Unit tests
         run: npm run test:unit -- --run
