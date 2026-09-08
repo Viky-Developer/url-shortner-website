@@ -72,9 +72,9 @@ test.describe('About Page', () => {
 			page.getByRole('heading', { name: /Inspect the Code\. Fork the Architecture\./i })
 		).toBeVisible();
 
-		await expect(page.getByText('Stars')).toBeVisible();
-		await expect(page.getByText('MIT')).toBeVisible();
-		await expect(page.getByText('Commits')).toBeVisible();
+		await expect(page.getByText('Stars', { exact: true })).toBeVisible();
+		await expect(page.getByText('License', { exact: true })).toBeVisible();
+		await expect(page.getByText('Commits', { exact: true })).toBeVisible();
 		await expect(page.getByRole('link', { name: /View Source Code/i })).toBeVisible();
 	});
 
