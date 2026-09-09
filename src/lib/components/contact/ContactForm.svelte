@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onDestroy } from 'svelte';
 	import emailjs from '@emailjs/browser';
 	import { env } from '$env/dynamic/public';
 	import { Lock, Send, Check, ShieldCheck, Loader2, X } from 'lucide-svelte';
@@ -17,13 +18,27 @@
 	let githubUrl = $state('');
 	let message = $state('');
 	let isSubmitting = $state(false);
-	let isSent = $state(false);
 	let showToast = $state(false);
 	let errorMessage = $state('');
+	let toastTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
 	function selectTrack(track: string) {
 		selectedTrack = track;
 	}
+
+	function closeToast() {
+		showToast = false;
+		if (toastTimeoutId) {
+			clearTimeout(toastTimeoutId);
+			toastTimeoutId = null;
+		}
+	}
+
+	onDestroy(() => {
+		if (toastTimeoutId) {
+			clearTimeout(toastTimeoutId);
+		}
+	});
 
 	async function handleSubmit(e: SubmitEvent) {
 		e.preventDefault();
@@ -36,10 +51,23 @@
 		const templateId = env.PUBLIC_EMAILJS_TEMPLATE_ID || '';
 		const publicKey = env.PUBLIC_EMAILJS_PUBLIC_KEY || '';
 
+		const now = new Date();
+		const formattedTime = now.toLocaleString('en-US', {
+			dateStyle: 'medium',
+			timeStyle: 'short'
+		});
+
 		const templateParams = {
+			name: fullName,
 			from_name: fullName,
+			email: email,
 			from_email: email,
+			reply_to: email,
+			time: formattedTime,
+			date: formattedTime,
 			inquiry_track: selectedTrack,
+			title: `${fullName} - ${selectedTrack}`,
+			subject: `New Inquiry from ${fullName} [${selectedTrack}]`,
 			github_url: githubUrl || 'N/A',
 			message: message
 		};
@@ -52,7 +80,6 @@
 				await new Promise((r) => setTimeout(r, 600));
 			}
 
-			isSent = true;
 			showToast = true;
 
 			// Reset form fields
@@ -61,6 +88,13 @@
 			selectedTrack = '';
 			githubUrl = '';
 			message = '';
+
+			// 5-second automatic timeout for toast
+			if (toastTimeoutId) clearTimeout(toastTimeoutId);
+			toastTimeoutId = setTimeout(() => {
+				showToast = false;
+				toastTimeoutId = null;
+			}, 5000);
 		} catch (err: unknown) {
 			errorMessage =
 				err instanceof Error
@@ -214,9 +248,6 @@
 				{#if isSubmitting}
 					<Loader2 class="h-4 w-4 animate-spin" />
 					<span>Transmitting...</span>
-				{:else if isSent}
-					<Check class="h-4 w-4 text-emerald-300" />
-					<span>Message Sent</span>
 				{:else}
 					<span>Send Message</span>
 					<Send class="h-4 w-4" />
@@ -229,32 +260,6 @@
 			</div>
 		</div>
 	</form>
-
-	<!-- Success Feedback Toast -->
-	{#if showToast}
-		<div
-			class="mt-5 flex items-center justify-between rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-emerald-900 shadow-xs"
-		>
-			<div class="flex items-center gap-3">
-				<Check class="h-5 w-5 shrink-0 text-emerald-600" />
-				<div>
-					<p class="text-xs font-semibold text-emerald-900 sm:text-sm">Message Sent Successfully</p>
-					<p class="text-xs text-emerald-800">
-						Thank you for reaching out. We have received your inquiry and will respond within 12
-						hours.
-					</p>
-				</div>
-			</div>
-			<button
-				type="button"
-				onclick={() => (showToast = false)}
-				class="ml-2 cursor-pointer text-emerald-700 hover:text-emerald-950"
-				aria-label="Close notification"
-			>
-				<X class="h-4 w-4" />
-			</button>
-		</div>
-	{/if}
 
 	<!-- Error Alert -->
 	{#if errorMessage}
@@ -273,3 +278,32 @@
 		</div>
 	{/if}
 </div>
+
+<!-- Floating Toast Notification (Top Right Corner with 5s auto-dismiss) -->
+{#if showToast}
+	<div
+		class="fixed top-20 right-4 z-50 flex max-w-md items-start gap-3 rounded-2xl border border-emerald-200/90 bg-white p-4 text-slate-900 shadow-2xl transition-all duration-300 sm:right-8"
+		role="status"
+		aria-live="polite"
+	>
+		<div
+			class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600"
+		>
+			<Check class="h-4 w-4" />
+		</div>
+		<div class="flex-1 pr-2">
+			<p class="text-sm font-bold tracking-tight text-slate-900">Message Sent Successfully</p>
+			<p class="mt-0.5 text-xs text-slate-600">
+				Thank you for reaching out. We have received your inquiry and will respond within 12 hours.
+			</p>
+		</div>
+		<button
+			type="button"
+			onclick={closeToast}
+			class="cursor-pointer rounded-lg p-1 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
+			aria-label="Close notification"
+		>
+			<X class="h-4 w-4" />
+		</button>
+	</div>
+{/if}
