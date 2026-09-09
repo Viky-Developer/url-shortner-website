@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import Hero from '$lib/components/Hero.svelte';
+	import TelemetryWidget from '$lib/components/TelemetryWidget.svelte';
 	import Architecture from '$lib/components/Architecture.svelte';
 	import FeaturesGrid from '$lib/components/FeaturesGrid.svelte';
 	import DevWorkspace from '$lib/components/DevWorkspace.svelte';
@@ -28,6 +29,7 @@
 
 <div class="flex w-full flex-col">
 	<Hero />
+	<TelemetryWidget />
 	<Architecture />
 	<FeaturesGrid />
 	<DevWorkspace />
