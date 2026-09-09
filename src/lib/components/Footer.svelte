@@ -63,6 +63,7 @@
 					</li>
 					<li>
 						<a href="/#contact" class="transition hover:text-slate-900">Contact</a>
+						<a href={resolve('/contact')} class="transition hover:text-slate-900">Contact</a>
 					</li>
 					<li>
 						<a
