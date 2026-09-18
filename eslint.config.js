@@ -47,7 +47,8 @@ export default defineConfig(
 			'src/lib/components/Footer.svelte',
 			'src/lib/components/Hero.svelte',
 			'src/lib/components/CtaBanner.svelte',
-			'src/lib/components/about/OpenSourceBanner.svelte'
+			'src/lib/components/about/OpenSourceBanner.svelte',
+			'src/lib/components/contact/ContactChannels.svelte'
 		],
 		rules: {
 			'svelte/no-navigation-without-resolve': 'off'
