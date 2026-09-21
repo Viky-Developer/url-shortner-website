@@ -123,7 +123,7 @@
 			class="flex items-center gap-1.5 rounded-md bg-slate-100 px-2.5 py-1 font-mono text-xs text-slate-600"
 		>
 			<Lock class="h-3.5 w-3.5 text-accent-emerald" />
-			<span>PGP / TLS 1.3</span>
+			<span>TLS 1.3 Encrypted</span>
 		</div>
 	</div>
 

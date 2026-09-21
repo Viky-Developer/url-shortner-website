@@ -1,33 +1,5 @@
 <script lang="ts">
-	import { Zap, Clock, Key, Download, Check } from 'lucide-svelte';
-
-	let copiedKey = $state(false);
-
-	const PGP_KEY_BLOCK = `-----BEGIN PGP PUBLIC KEY BLOCK-----
-Version: LinkPulse Core Security v1.0
-Key-ID: 7DF1E894
-Fingerprint: 4E8B 91F3 AC02 7DF1 5A21 99BC 00A1 4C58 E894
-
-mQGNBF8...LinkPulse Core Security Key (RSA 4096-bit)...
------END PGP PUBLIC KEY BLOCK-----`;
-
-	async function downloadOrCopyKey() {
-		try {
-			await navigator.clipboard.writeText(PGP_KEY_BLOCK);
-			copiedKey = true;
-			setTimeout(() => {
-				copiedKey = false;
-			}, 2000);
-		} catch {
-			const blob = new Blob([PGP_KEY_BLOCK], { type: 'text/plain' });
-			const url = URL.createObjectURL(blob);
-			const a = document.createElement('a');
-			a.href = url;
-			a.download = 'linkpulse-security-pgp.asc';
-			a.click();
-			URL.revokeObjectURL(url);
-		}
-	}
+	import { Zap, Clock, ShieldCheck } from 'lucide-svelte';
 </script>
 
 <div
@@ -84,32 +56,25 @@ mQGNBF8...LinkPulse Core Security Key (RSA 4096-bit)...
 		</p>
 	</div>
 
-	<!-- PGP Encrypted Key Section -->
+	<!-- Security & Transit Verification -->
 	<div
 		class="flex items-center justify-between gap-3 border-t border-slate-100 pt-3 text-slate-600"
 	>
 		<div class="flex min-w-0 items-center gap-2">
-			<Key class="h-4 w-4 shrink-0 text-slate-400" />
+			<ShieldCheck class="h-4 w-4 shrink-0 text-emerald-600" />
 			<div class="min-w-0">
 				<div class="font-mono text-[10px] leading-none text-slate-400 uppercase">
-					PGP Fingerprint
+					Channel Security
 				</div>
-				<div class="truncate font-mono text-xs text-slate-700">4E8B 91F3 AC02 7DF1 ... E894</div>
+				<div class="truncate font-mono text-xs text-slate-700">
+					256-Bit TLS 1.3 Transport Encrypted
+				</div>
 			</div>
 		</div>
-
-		<button
-			type="button"
-			onclick={downloadOrCopyKey}
-			class="inline-flex shrink-0 cursor-pointer items-center gap-1 font-mono text-xs font-medium text-primary-600 transition-colors hover:text-primary-700"
+		<span
+			class="rounded border border-emerald-200 bg-emerald-50 px-2 py-0.5 font-mono text-[10px] font-medium text-emerald-700"
 		>
-			{#if copiedKey}
-				<Check class="h-3.5 w-3.5 text-emerald-600" />
-				<span class="text-emerald-600">Copied Key</span>
-			{:else}
-				<span>Download Key</span>
-				<Download class="h-3.5 w-3.5" />
-			{/if}
-		</button>
+			Verified
+		</span>
 	</div>
 </div>

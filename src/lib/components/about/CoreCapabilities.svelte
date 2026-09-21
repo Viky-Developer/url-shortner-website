@@ -134,11 +134,11 @@
 					>
 						<Laptop class="h-5 w-5" />
 					</div>
-					<h3 class="text-xl font-bold text-slate-900">Multi-Device &amp; Conflict Mitigation</h3>
+					<h3 class="text-xl font-bold text-slate-900">Multi-Session Management</h3>
 					<p class="text-sm leading-relaxed text-slate-600 sm:text-base">
-						Session synchronization incorporates optimistic concurrency control with HTTP 409
-						Conflict mitigation. Prevents race conditions during simultaneous vanity slug creation
-						across multiple team windows.
+						A single user can stay signed in across multiple devices simultaneously with zero
+						conflict. Each session gets an isolated token - no shared state. Users can view all
+						active sessions and revoke any individual device without affecting others.
 					</p>
 				</div>
 
@@ -146,17 +146,17 @@
 					<span
 						class="rounded-lg border border-slate-200 bg-slate-100 px-3 py-1 font-mono text-xs font-medium text-slate-700"
 					>
-						Atomic CAS Operations
+						Isolated Session Tokens
 					</span>
 					<span
 						class="rounded-lg border border-slate-200 bg-slate-100 px-3 py-1 font-mono text-xs font-medium text-slate-700"
 					>
-						Multi-Session Invalidation
+						Per-Device Revocation
 					</span>
 					<span
 						class="rounded-lg border border-slate-200 bg-slate-100 px-3 py-1 font-mono text-xs font-medium text-slate-700"
 					>
-						Audit Logging
+						Conflict-Free Concurrency
 					</span>
 				</div>
 			</div>

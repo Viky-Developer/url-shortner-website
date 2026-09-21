@@ -45,7 +45,7 @@
 						href={resolve('/contact')}
 						class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white/10 px-7 py-3.5 font-sans text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20 sm:w-auto"
 					>
-						<span>Talk to Sales</span>
+						<span>Contact</span>
 					</a>
 				</div>
 

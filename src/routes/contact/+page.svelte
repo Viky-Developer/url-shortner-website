@@ -12,7 +12,7 @@
 	<title>Contact | LinkPulse — Developer Inquiry Gateway</title>
 	<meta
 		name="description"
-		content="Direct message gateway, support SLA matrices, PGP security coordinates, and engineering collaboration channels for LinkPulse."
+		content="Direct message gateway, support SLA matrices, secure communication coordinates, and engineering collaboration channels for LinkPulse."
 	/>
 </svelte:head>
 

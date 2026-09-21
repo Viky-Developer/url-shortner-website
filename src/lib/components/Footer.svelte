@@ -10,10 +10,10 @@
 	<div class="mx-auto max-w-300 px-4 py-12 sm:px-8 lg:py-16">
 		<div class="grid grid-cols-1 gap-10 md:grid-cols-12">
 			<!-- Brand + Stack Tags -->
-			<div class="space-y-4 md:col-span-5">
+			<div class="space-y-4 md:col-span-4">
 				<a
 					href={resolve('/')}
-					class="flex items-center gap-2 focus:outline-none"
+					class="flex items-center gap-2 focus:outline-hidden"
 					aria-label="LinkPulse Home"
 				>
 					<img src={logoUrl} alt="LinkPulse Logo" class="h-7 w-7 rounded-lg object-contain" />
@@ -49,8 +49,32 @@
 				</div>
 			</div>
 
+			<!-- Core Features Links -->
+			<div class="space-y-3 md:col-span-3 md:col-start-5">
+				<div class="font-mono text-xs font-semibold tracking-wider text-slate-400 uppercase">
+					Core Features
+				</div>
+				<ul class="space-y-2 text-xs text-slate-600 sm:text-sm">
+					<li>
+						<a href={resolve('/features/routing')} class="transition hover:text-slate-900">
+							URL Routing
+						</a>
+					</li>
+					<li>
+						<a href={resolve('/features/analytics')} class="transition hover:text-slate-900">
+							Telemetry &amp; Analytics
+						</a>
+					</li>
+					<li>
+						<a href={resolve('/features/management')} class="transition hover:text-slate-900">
+							Link Management
+						</a>
+					</li>
+				</ul>
+			</div>
+
 			<!-- Navigation Links -->
-			<div class="space-y-3 md:col-span-3 md:col-start-7">
+			<div class="space-y-3 md:col-span-2">
 				<div class="font-mono text-xs font-semibold tracking-wider text-slate-400 uppercase">
 					Navigation
 				</div>
@@ -62,7 +86,6 @@
 						<a href={resolve('/about')} class="transition hover:text-slate-900">About</a>
 					</li>
 					<li>
-						<a href="/#contact" class="transition hover:text-slate-900">Contact</a>
 						<a href={resolve('/contact')} class="transition hover:text-slate-900">Contact</a>
 					</li>
 					<li>
@@ -105,7 +128,6 @@
 			class="mt-12 flex flex-col items-center justify-between gap-3 border-t border-slate-200 pt-6 text-xs text-slate-600 sm:flex-row"
 		>
 			<div>© {new Date().getFullYear()} LinkPulse URL Shortener. All rights reserved.</div>
-			<div class="font-mono text-[11px] text-slate-400">v1.0.4-prod (rev 7f94c2e)</div>
 		</div>
 	</div>
 </footer>
