@@ -144,6 +144,8 @@ url-shortner-website/
    PUBLIC_GITHUB_URL=https://github.com/Viky-Developer/url-shortner-website
    PUBLIC_LOGIN_URL=http://localhost:5174/login
    PUBLIC_LOGO_URL=/logo.svg
+   PUBLIC_CONTACT_EMAIL=linkplusedev@gmail.com
+   PUBLIC_DISCORD_URL=https://discord.gg
 
    # Optional: EmailJS configuration for Contact Form
    PUBLIC_EMAILJS_SERVICE_ID=

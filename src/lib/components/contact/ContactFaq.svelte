@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { HelpCircle, ChevronDown } from 'lucide-svelte';
+	import { env } from '$env/dynamic/public';
+
+	const contactEmail = env.PUBLIC_CONTACT_EMAIL || 'linkplusedev@gmail.com';
 
 	const FAQ_ITEMS = [
 		{
@@ -11,8 +14,7 @@
 		{
 			dotColor: 'bg-accent-rose',
 			question: 'Reporting an urgent redirect vulnerability?',
-			answer:
-				'Mark your message as "Bug Report & Issues" or email linkplusedev@gmail.com. Triage turnaround is under 6 hours.'
+			answer: `Mark your message as "Bug Report & Issues" or email ${contactEmail}. Triage turnaround is under 6 hours.`
 		},
 		{
 			dotColor: 'bg-accent-purple',

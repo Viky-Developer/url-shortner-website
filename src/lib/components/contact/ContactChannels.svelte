@@ -2,8 +2,10 @@
 	import { Mail, Bug, MessageSquare, Copy, Check, ArrowUpRight } from 'lucide-svelte';
 	import { env } from '$env/dynamic/public';
 
-	const emailAddress = 'linkplusedev@gmail.com';
-	const githubUrl = env.PUBLIC_GITHUB_URL || '#';
+	const emailAddress = env.PUBLIC_CONTACT_EMAIL || 'linkplusedev@gmail.com';
+	const githubUrl =
+		env.PUBLIC_GITHUB_URL || 'https://github.com/Viky-Developer/url-shortner-website';
+	const discordUrl = env.PUBLIC_DISCORD_URL || 'https://discord.gg';
 
 	let copied = $state(false);
 
@@ -96,7 +98,7 @@
 
 		<!-- Community Discord & Slack -->
 		<a
-			href="https://discord.gg"
+			href={discordUrl}
 			target="_blank"
 			rel="noreferrer"
 			class="group flex items-center justify-between rounded-xl border border-slate-200/70 bg-slate-50 p-3 transition-colors hover:bg-slate-100/90"
