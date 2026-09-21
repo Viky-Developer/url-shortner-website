@@ -47,7 +47,7 @@ test.describe('Contact Page', () => {
 
 	test('renders Direct Coordinates & Channels card with email copy trigger', async ({ page }) => {
 		await expect(page.getByText('Direct Coordinates & Channels')).toBeVisible();
-		await expect(page.getByText('linkplusedev@gmail.com')).toBeVisible();
+		await expect(page.getByText('linkplusedev@gmail.com', { exact: true })).toBeVisible();
 		await expect(page.getByText('github.com/linkpulse/issues')).toBeVisible();
 		await expect(page.getByText('linkpulse.dev/community')).toBeVisible();
 		await expect(page.getByTitle('Copy email address')).toBeVisible();
