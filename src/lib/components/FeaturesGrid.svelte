@@ -1,5 +1,61 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { Link2, BarChart2, FolderCog, ArrowRight } from 'lucide-svelte';
+
+	interface CapabilityCard {
+		id: string;
+		href: string;
+		title: string;
+		description: string;
+		cta: string;
+		icon: typeof Link2;
+		iconBg: string;
+		iconHoverBg: string;
+		iconColor: string;
+		borderHover: string;
+	}
+
+	const capabilities: CapabilityCard[] = [
+		{
+			id: 'routing',
+			href: resolve('/features/routing'),
+			title: 'Create Short URLs',
+			description:
+				'Generate clean, shareable short links instantly with custom vanity slugs, UTM parameter presets, and automatic timestamp expiration.',
+			cta: 'Explore Routing',
+			icon: Link2,
+			iconBg: 'bg-primary-fixed',
+			iconHoverBg: 'group-hover:bg-primary-600 group-hover:text-white',
+			iconColor: 'text-primary-600',
+			borderHover: 'hover:border-primary-300'
+		},
+		{
+			id: 'analytics',
+			href: resolve('/features/analytics'),
+			title: 'Track Analytics',
+			description:
+				'Monitor real-time clicks, referrers, device architectures, operating systems, and campaign engagement across all your distributed endpoints.',
+			cta: 'Explore Analytics',
+			icon: BarChart2,
+			iconBg: 'bg-slate-100',
+			iconHoverBg: 'group-hover:bg-slate-900 group-hover:text-white',
+			iconColor: 'text-slate-700',
+			borderHover: 'hover:border-indigo-300'
+		},
+		{
+			id: 'management',
+			href: resolve('/features/management'),
+			title: 'Manage Links',
+			description:
+				'Organize tags, search in millisecond intervals, batch disable old campaigns, and administrate multiple custom vanity domains from one central dashboard.',
+			cta: 'Explore Management',
+			icon: FolderCog,
+			iconBg: 'bg-amber-100',
+			iconHoverBg: 'group-hover:bg-amber-700 group-hover:text-white',
+			iconColor: 'text-amber-800',
+			borderHover: 'hover:border-amber-300'
+		}
+	];
 </script>
 
 <section class="w-full bg-surface py-16 sm:py-24">
@@ -17,77 +73,32 @@
 		</div>
 
 		<div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-			<!-- Card 1 -->
-			<div
-				class="group flex flex-col justify-between rounded-xl border border-slate-200/80 bg-surface-container-lowest p-6 shadow-sm transition-all duration-200 hover:shadow-xl"
-			>
-				<div>
-					<div
-						class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-fixed text-primary-600 transition-colors group-hover:bg-primary-600 group-hover:text-white"
-					>
-						<Link2 class="h-6 w-6 rotate-45" />
-					</div>
-					<h3 class="mb-2 font-sans text-lg font-semibold text-slate-900">Create Short URLs</h3>
-					<p class="text-xs leading-relaxed text-slate-600 sm:text-sm">
-						Generate clean, shareable short links instantly with custom vanity slugs, UTM parameter
-						presets, and automatic timestamp expiration.
-					</p>
-				</div>
-				<div
-					class="mt-6 flex items-center gap-1.5 pt-4 text-xs font-medium text-primary-600 transition-transform group-hover:translate-x-1 sm:text-sm"
+			{#each capabilities as item (item.id)}
+				<a
+					href={item.href}
+					class="group flex flex-col justify-between rounded-xl border border-slate-200/80 bg-surface-container-lowest p-6 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:shadow-xl {item.borderHover}"
 				>
-					<span>Explore Routing</span>
-					<ArrowRight class="h-4 w-4" />
-				</div>
-			</div>
-
-			<!-- Card 2 -->
-			<div
-				class="group flex flex-col justify-between rounded-xl border border-slate-200/80 bg-surface-container-lowest p-6 shadow-sm transition-all duration-200 hover:shadow-xl"
-			>
-				<div>
-					<div
-						class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-slate-700 transition-colors group-hover:bg-slate-900 group-hover:text-white"
-					>
-						<BarChart2 class="h-6 w-6" />
+					<div>
+						<div
+							class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl {item.iconBg} {item.iconColor} transition-colors {item.iconHoverBg}"
+						>
+							<item.icon class="h-6 w-6 {item.id === 'routing' ? 'rotate-45' : ''}" />
+						</div>
+						<h3 class="mb-2 font-sans text-lg font-semibold text-slate-900">
+							{item.title}
+						</h3>
+						<p class="text-xs leading-relaxed text-slate-600 sm:text-sm">
+							{item.description}
+						</p>
 					</div>
-					<h3 class="mb-2 font-sans text-lg font-semibold text-slate-900">Track Analytics</h3>
-					<p class="text-xs leading-relaxed text-slate-600 sm:text-sm">
-						Monitor real-time clicks, referrers, device architectures, operating systems, and
-						campaign engagement across all your distributed endpoints.
-					</p>
-				</div>
-				<div
-					class="mt-6 flex items-center gap-1.5 pt-4 text-xs font-medium text-primary-600 transition-transform group-hover:translate-x-1 sm:text-sm"
-				>
-					<span>Explore Analytics</span>
-					<ArrowRight class="h-4 w-4" />
-				</div>
-			</div>
-
-			<!-- Card 3 -->
-			<div
-				class="group flex flex-col justify-between rounded-xl border border-slate-200/80 bg-surface-container-lowest p-6 shadow-sm transition-all duration-200 hover:shadow-xl"
-			>
-				<div>
 					<div
-						class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100 text-amber-800 transition-colors group-hover:bg-amber-700 group-hover:text-white"
+						class="mt-6 flex items-center gap-1.5 pt-4 text-xs font-medium text-primary-600 transition-transform group-hover:translate-x-1 sm:text-sm"
 					>
-						<FolderCog class="h-6 w-6" />
+						<span>{item.cta}</span>
+						<ArrowRight class="h-4 w-4" />
 					</div>
-					<h3 class="mb-2 font-sans text-lg font-semibold text-slate-900">Manage Links</h3>
-					<p class="text-xs leading-relaxed text-slate-600 sm:text-sm">
-						Organize tags, search in millisecond intervals, batch disable old campaigns, and
-						administrate multiple custom vanity domains from one central dashboard.
-					</p>
-				</div>
-				<div
-					class="mt-6 flex items-center gap-1.5 pt-4 text-xs font-medium text-primary-600 transition-transform group-hover:translate-x-1 sm:text-sm"
-				>
-					<span>Explore Management</span>
-					<ArrowRight class="h-4 w-4" />
-				</div>
-			</div>
+				</a>
+			{/each}
 		</div>
 	</div>
 </section>

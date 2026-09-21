@@ -1,6 +1,17 @@
 <script lang="ts">
+	import { slide } from 'svelte/transition';
 	import { resolve } from '$app/paths';
-	import { ArrowRight, Terminal, Link2, Share2, Copy, QrCode, Zap, Check } from 'lucide-svelte';
+	import {
+		ArrowRight,
+		Terminal,
+		Link2,
+		Share2,
+		Copy,
+		QrCode,
+		Zap,
+		Check,
+		Download
+	} from 'lucide-svelte';
 	import { env } from '$env/dynamic/public';
 
 	const DEFAULT_URL =
@@ -13,8 +24,36 @@
 	let loading = $state(false);
 	let copied = $state(false);
 	let showQrPanel = $state(false);
+	let qrCodeDataUrl = $state('');
 
 	const loginUrl: string = env.PUBLIC_LOGIN_URL || '#';
+
+	async function generateQr(url: string) {
+		try {
+			const fullUrl =
+				url.startsWith('http://') || url.startsWith('https://') ? url : `https://${url}`;
+			// Dynamic import avoids top-level module resolution — Vite handles CJS interop at runtime
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			const qr = (await import('qrcode')) as any;
+			qrCodeDataUrl = await qr.toDataURL(fullUrl, {
+				width: 320,
+				margin: 2,
+				color: {
+					dark: '#0f172a',
+					light: '#ffffff'
+				},
+				errorCorrectionLevel: 'M'
+			});
+		} catch (err) {
+			console.error('Failed to generate QR code:', err);
+		}
+	}
+
+	$effect(() => {
+		if (shortenedLink) {
+			generateQr(shortenedLink);
+		}
+	});
 
 	async function shorten() {
 		if (!inputUrl.trim()) return;
@@ -42,6 +81,14 @@
 
 	function toggleQr() {
 		showQrPanel = !showQrPanel;
+	}
+
+	function downloadQr() {
+		if (!qrCodeDataUrl) return;
+		const link = document.createElement('a');
+		link.href = qrCodeDataUrl;
+		link.download = `linkpulse-qr-${shortenedLink.replace(/[^a-zA-Z0-9]/g, '-')}.png`;
+		link.click();
 	}
 </script>
 
@@ -224,25 +271,59 @@
 			<!-- Expandable Inline QR Code Panel -->
 			{#if showQrPanel}
 				<div
-					class="mt-4 flex items-center justify-between rounded-xl border border-slate-200 bg-surface-container-lowest p-4 shadow-md"
+					transition:slide={{ duration: 250 }}
+					class="mt-4 flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-4.5 shadow-md sm:flex-row sm:items-center sm:justify-between sm:p-5"
 				>
-					<div class="space-y-1">
-						<h4 class="font-sans text-sm font-semibold text-slate-900">QR Code Vector</h4>
-						<p class="text-xs text-slate-500">
-							Scan to invoke sub-millisecond edge redirection directly.
+					<div class="space-y-2">
+						<div class="flex items-center gap-2">
+							<h4 class="font-sans text-sm font-semibold text-slate-900 sm:text-base">
+								Scannable QR Code
+							</h4>
+							<span
+								class="inline-flex items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 font-mono text-[10px] font-medium text-emerald-700"
+							>
+								<span class="h-1.5 w-1.5 animate-pulse rounded-full bg-accent-emerald"></span>
+								Ready to scan
+							</span>
+						</div>
+						<p class="max-w-md text-xs leading-relaxed text-slate-500">
+							Point your phone camera or QR reader at the code to test sub-millisecond edge
+							redirection in real time.
 						</p>
-						<div class="font-mono text-xs font-medium text-primary-600">
-							Target: https://{shortenedLink}
+						<div class="flex flex-wrap items-center gap-2 pt-1">
+							<span
+								class="inline-flex items-center gap-1.5 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 font-mono text-xs font-medium text-slate-700"
+							>
+								<span class="text-slate-400">URL:</span>
+								https://{shortenedLink}
+							</span>
+							<button
+								type="button"
+								onclick={downloadQr}
+								disabled={!qrCodeDataUrl}
+								class="inline-flex cursor-pointer items-center gap-1.5 rounded-md border border-slate-200 bg-surface-container-lowest px-2.5 py-1 font-mono text-xs font-medium text-slate-700 shadow-2xs transition-colors hover:bg-slate-100 hover:text-slate-900 disabled:opacity-50"
+							>
+								<Download class="h-3.5 w-3.5 text-slate-500" />
+								<span>Download PNG</span>
+							</button>
 						</div>
 					</div>
-					<div
-						class="flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-slate-950 p-2 shadow"
-					>
-						<svg class="h-full w-full text-white" fill="currentColor" viewBox="0 0 24 24">
-							<path
-								d="M2 2h8v8H2V2zm2 2v4h4V4H4zm-2 10h8v8H2v-8zm2 2v4h4v-4H4zm10-14h8v8h-8V2zm2 2v4h4V4h-4zm2 10h2v2h-2v-2zm-2 2h2v4h-2v-4zm4 0h2v2h-2v-2zm-2 4h4v2h-4v-2zm4-4h2v2h-2v-2zM6 6h2v2H6V6zm0 12h2v2H6v-2zm12-12h2v2h-2V6z"
-							/>
-						</svg>
+
+					<div class="flex shrink-0 flex-col items-center justify-center self-center sm:self-auto">
+						<div
+							class="flex h-32 w-32 items-center justify-center rounded-xl border border-slate-200 bg-white p-1.5 shadow-sm"
+						>
+							{#if qrCodeDataUrl}
+								<img
+									src={qrCodeDataUrl}
+									alt="QR Code for https://{shortenedLink}"
+									class="h-full w-full rounded-lg object-contain"
+								/>
+							{:else}
+								<div class="h-full w-full animate-pulse rounded-lg bg-slate-100"></div>
+							{/if}
+						</div>
+						<span class="mt-1.5 font-mono text-[10px] text-slate-400">Scan with Phone</span>
 					</div>
 				</div>
 			{/if}

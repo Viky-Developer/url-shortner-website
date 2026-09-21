@@ -47,6 +47,7 @@ export default defineConfig(
 			'src/lib/components/Footer.svelte',
 			'src/lib/components/Hero.svelte',
 			'src/lib/components/CtaBanner.svelte',
+			'src/lib/components/FeaturesGrid.svelte',
 			'src/lib/components/about/OpenSourceBanner.svelte',
 			'src/lib/components/contact/ContactChannels.svelte'
 		],

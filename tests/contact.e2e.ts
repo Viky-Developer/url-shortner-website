@@ -21,7 +21,7 @@ test.describe('Contact Page', () => {
 
 	test('renders Direct Message Gateway form with interactive pill selector', async ({ page }) => {
 		await expect(page.getByRole('heading', { name: 'Direct Message Gateway' })).toBeVisible();
-		await expect(page.getByText('PGP / TLS 1.3')).toBeVisible();
+		await expect(page.getByText('TLS 1.3 Encrypted')).toBeVisible();
 
 		// Check form fields
 		const nameInput = page.getByLabel(/Full Name/i);
@@ -47,10 +47,9 @@ test.describe('Contact Page', () => {
 
 	test('renders Direct Coordinates & Channels card with email copy trigger', async ({ page }) => {
 		await expect(page.getByText('Direct Coordinates & Channels')).toBeVisible();
-		await expect(page.getByText('contact@linkpulse.dev')).toBeVisible();
+		await expect(page.getByText('linkplusedev@gmail.com')).toBeVisible();
 		await expect(page.getByText('github.com/linkpulse/issues')).toBeVisible();
 		await expect(page.getByText('linkpulse.dev/community')).toBeVisible();
-		await expect(page.getByText('linkedin.com/in/developer-profile')).toBeVisible();
 		await expect(page.getByTitle('Copy email address')).toBeVisible();
 	});
 
@@ -60,8 +59,8 @@ test.describe('Contact Page', () => {
 		await expect(page.getByText('Response Time Matrix')).toBeVisible();
 		await expect(page.getByText('High Priority', { exact: true })).toBeVisible();
 		await expect(page.getByText('TIMEZONE / AVAILABILITY')).toBeVisible();
-		await expect(page.getByText('PGP Fingerprint')).toBeVisible();
-		await expect(page.getByRole('button', { name: /Download Key/i })).toBeVisible();
+		await expect(page.getByText('Channel Security')).toBeVisible();
+		await expect(page.getByText('256-Bit TLS 1.3 Transport Encrypted')).toBeVisible();
 	});
 
 	test('renders Frequently Asked Topics accordion and expands items', async ({ page }) => {

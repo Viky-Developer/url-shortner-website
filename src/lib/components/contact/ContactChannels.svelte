@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Mail, Bug, MessageSquare, Briefcase, Copy, Check, ArrowUpRight } from 'lucide-svelte';
+	import { Mail, Bug, MessageSquare, Copy, Check, ArrowUpRight } from 'lucide-svelte';
 	import { env } from '$env/dynamic/public';
 
-	const emailAddress = 'contact@linkpulse.dev';
+	const emailAddress = 'linkplusedev@gmail.com';
 	const githubUrl = env.PUBLIC_GITHUB_URL || '#';
 
 	let copied = $state(false);
@@ -113,31 +113,6 @@
 					</div>
 					<div class="truncate font-mono text-xs font-medium text-slate-900 sm:text-sm">
 						linkpulse.dev/community
-					</div>
-				</div>
-			</div>
-			<ArrowUpRight class="h-4 w-4 text-slate-400 transition-colors group-hover:text-slate-900" />
-		</a>
-
-		<!-- LinkedIn Profile -->
-		<a
-			href="https://linkedin.com"
-			target="_blank"
-			rel="noreferrer"
-			class="group flex items-center justify-between rounded-xl border border-slate-200/70 bg-slate-50 p-3 transition-colors hover:bg-slate-100/90"
-		>
-			<div class="flex min-w-0 items-center gap-3">
-				<div
-					class="bg-secondary-container flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-primary-container"
-				>
-					<Briefcase class="h-4 w-4" />
-				</div>
-				<div class="min-w-0">
-					<div class="font-mono text-[10px] font-semibold text-slate-500 uppercase">
-						LinkedIn Profile
-					</div>
-					<div class="truncate font-mono text-xs font-medium text-slate-900 sm:text-sm">
-						linkedin.com/in/developer-profile
 					</div>
 				</div>
 			</div>

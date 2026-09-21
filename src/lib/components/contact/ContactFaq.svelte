@@ -12,7 +12,7 @@
 			dotColor: 'bg-accent-rose',
 			question: 'Reporting an urgent redirect vulnerability?',
 			answer:
-				'Mark your message as "Bug Report & Issues" or email security@linkpulse.dev with our PGP key. Triage turnaround is under 6 hours.'
+				'Mark your message as "Bug Report & Issues" or email linkplusedev@gmail.com. Triage turnaround is under 6 hours.'
 		},
 		{
 			dotColor: 'bg-accent-purple',
